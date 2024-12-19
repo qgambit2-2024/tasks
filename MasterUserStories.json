@@ -1,0 +1,332 @@
+{
+  "sheetInfo": {
+    "url": "https://docs.google.com/spreadsheets/d/1g5QXB3UGBpKpySA82Y5Fl1U5Iy8wGLTJTH1uUdcumXE/edit",
+    "documentName": "Craft Story Maker: Backend PlayerDB",
+    "sheetName": "User Stories"
+  },
+  "storyData": [
+    {
+      "story": "Our service receives requests from a client that includes the query param `isAdmin=true` or `isAdmin=false`\n\n- As an Admin user, I should see the first and last names of all players. \n- As a regular user, I should only see the first names of all players. \n\nScope:\n\n- Plan and implement a new feature in your service\n- Add test coverage",
+      "skillsTested": {
+        "AI": false,
+        "Production-readiness": false,
+        "ApiDesign": true,
+        "Testing": true,
+        "SystemDesign": false,
+        "Storage": false
+      },
+      "targetRubricLevels": {
+        "SWE": true,
+        "Senior": true,
+        "Staff": true,
+        "Advanced": true
+      },
+      "assessorInfo": {
+        "hintsAndSuggestions": "- API: Design and implementation\n- Testing: Unit and Integration tests",
+        "solution": ""
+      }
+    },
+    {
+      "story": "The service should be ready for production",
+      "skillsTested": {
+        "AI": false,
+        "Production-readiness": true,
+        "ApiDesign": false,
+        "Testing": false,
+        "SystemDesign": false,
+        "Storage": false
+      },
+      "targetRubricLevels": {
+        "SWE": true,
+        "Senior": false,
+        "Staff": false,
+        "Advanced": false
+      },
+      "assessorInfo": {
+        "hintsAndSuggestions": "- SWE II, should be able to identify a few of these without prompting. \n- Senior and above, should be able to identify the majority of these without prompting and should be able to expand on what implementation would look like. \n\n1. Query param validations\n2. Logging & Monitoring \n3. Exception handling with try/catch \n4. HTTP response codes built into the request/responses\n5. Error messages\n6. Expectations on status code location",
+        "solution": "1. Query params should be validated before any additional business logic is handled. An invalid query param value should return a HTTP status code `400`.\n2. Consider capturing:\n   1. Alerts that engineering team members should be made aware of when unexpected situations occur.\n   2. System performance metrics.\n3. Functions that can raise exceptions should be wrapped in try/catch\n4. HTTP error codes: `200: ok`, `400: client error`, `404: not found`, `500: server error`\n5. Nice to have: an error object on the response body that describes the issue. Any information shared with the client should not provide information about the system.\n   1. Safe error messages: `500: something went wrong`\n   2. Unsafe error messages: `500: query timed out`\n6. Status codes should be in the header, optionally can be added to the response body."
+      }
+    },
+    {
+      "story": "As a User, I would like to create a new player\n\nScope:\n\n- Plan and implement a new feature in your service\n- Add test coverage",
+      "skillsTested": {
+        "AI": false,
+        "Production-readiness": false,
+        "ApiDesign": true,
+        "Testing": false,
+        "SystemDesign": false,
+        "Storage": false
+      },
+      "targetRubricLevels": {
+        "SWE": true,
+        "Senior": false,
+        "Staff": false,
+        "Advanced": false
+      },
+      "assessorInfo": {
+        "hintsAndSuggestions": "",
+        "solution": ""
+      }
+    },
+    {
+      "story": "As a User, I would like to update an existing player.\n\nScope:\n\n- Plan and implement given feature in your service.\n- Add test coverage. ",
+      "skillsTested": {
+        "AI": false,
+        "Production-readiness": false,
+        "ApiDesign": true,
+        "Testing": true,
+        "SystemDesign": false,
+        "Storage": false
+      },
+      "targetRubricLevels": {
+        "SWE": true,
+        "Senior": false,
+        "Staff": false,
+        "Advanced": false
+      },
+      "assessorInfo": {
+        "hintsAndSuggestions": "",
+        "solution": ""
+      },
+      "followupQuestions": [
+        "What API route would you create?",
+        "What should the API return to the UI to show that the player was created/updated"
+      ]
+    },
+    {
+      "story": "As a User, when I make a request to `/v1/players` or `v1/players/{id}`, I would like to see the players' ages in the response. \n\nScope:\n\n- Plan and implement given feature in your service.\n- Add test coverage. ",
+      "skillsTested": {
+        "AI": false,
+        "Production-readiness": false,
+        "ApiDesign": false,
+        "Testing": true,
+        "SystemDesign": false,
+        "Storage": false
+      },
+      "targetRubricLevels": {
+        "SWE": false,
+        "Senior": true,
+        "Staff": true,
+        "Advanced": true
+      },
+      "assessorInfo": {
+        "hintsAndSuggestions": "- Estimated time to complete: 45 minutes\n- Prompt the candidate to look at the data and clarify how \"age\" will be calculated. \n- There are different solutions here, you should agree with the candidate on what will be implemented. ",
+        "solution": "Player's age can be determined by\n- If the player is alive (deathYear is empty) = currentYear - birthYear\n- If the player is deceased (deathYear is not empty) = deathYear - birthYear\n"
+      },
+      "followupQuestions": [
+        "How would you determine a player's age based on the information in the database?",
+        "How can you make getting the player's age performant?"
+      ]
+    },
+    {
+      "story": "As a User, I would like to see players sorted based on either weight or height\n\nScope:\n\n- Plan and implement given feature in your service.\n- Add test coverage. ",
+      "skillsTested": {
+        "AI": false,
+        "Production-readiness": false,
+        "ApiDesign": false,
+        "Testing": false,
+        "SystemDesign": false,
+        "Storage": false
+      },
+      "targetRubricLevels": {
+        "SWE": true,
+        "Senior": true,
+        "Staff": false,
+        "Advanced": false
+      },
+      "assessorInfo": {
+        "hintsAndSuggestions": "Discuss with the candidate how they would want to implement sorting",
+        "solution": ""
+      }
+    },
+    {
+      "story": "As a developer, I would like to improve the performance of `getPlayerById` API  which is subpar and is causing slow load times on the front end. (Note: You may not remove the simulated delay added in the code)",
+      "skillsTested": {
+        "AI": false,
+        "Production-readiness": false,
+        "ApiDesign": false,
+        "Testing": false,
+        "SystemDesign": true,
+        "Storage": false
+      },
+      "targetRubricLevels": {
+        "SWE": true,
+        "Senior": true,
+        "Staff": true,
+        "Advanced": false
+      },
+      "assessorInfo": {
+        "hintsAndSuggestions": "Discuss and implement a strategy to improve performance of getPlayerByI",
+        "solution": ""
+      }
+    },
+    {
+      "story": "As a developer, I would like to have test cases written out for implemented utility functions",
+      "skillsTested": {
+        "AI": false,
+        "Production-readiness": false,
+        "ApiDesign": false,
+        "Testing": true,
+        "SystemDesign": false,
+        "Storage": false
+      },
+      "targetRubricLevels": {
+        "SWE": true,
+        "Senior": true,
+        "Staff": true,
+        "Advanced": false
+      },
+      "assessorInfo": {
+        "hintsAndSuggestions": "Cover the edge cases",
+        "solution": ""
+      }
+    },
+    {
+      "story": "As a User, I'd like to be able to paginate through all the players\n\nScope:\n\n- Plan and implement a new feature in your service\nCreate unit tests for the feature.",
+      "skillsTested": {
+        "AI": false,
+        "Production-readiness": false,
+        "ApiDesign": false,
+        "Testing": false,
+        "SystemDesign": false,
+        "Storage": false
+      },
+      "targetRubricLevels": {
+        "SWE": true,
+        "Senior": true,
+        "Staff": false,
+        "Advanced": false
+      },
+      "assessorInfo": {
+        "hintsAndSuggestions": "Should add performant solution for pagination",
+        "solution": ""
+      }
+    },
+    {
+      "story": "Our service needs to store the following information for players: \n\n- Managers\n- Teams\n- Batting\n- Fielding\n- Pitching\n    \nDiscuss how you would design your database to support these data dependencies.",
+      "skillsTested": {
+        "AI": false,
+        "Production-readiness": false,
+        "ApiDesign": false,
+        "Testing": false,
+        "SystemDesign": true,
+        "Storage": true
+      },
+      "targetRubricLevels": {
+        "SWE": true,
+        "Senior": true,
+        "Staff": true,
+        "Advanced": true
+      },
+      "assessorInfo": {
+        "hintsAndSuggestions": "Research and implement a new strategy to scale our application to include a player’s manager data, team data, stats about batting, pitching and fielding.\n\n- many-to-one relationship between players and managers.\n- one-to-many relationship between teams and players.\n",
+        "solution": ""
+      }
+    },
+    {
+      "story": "Our service has recently grown by 100 million users. Queries are timing out. The time it takes for our service to respond to a request is taking over 2 minutes. \n\nDiscuss how you would scale the system to support the increased requests. ",
+      "skillsTested": {
+        "AI": false,
+        "Production-readiness": false,
+        "ApiDesign": false,
+        "Testing": false,
+        "SystemDesign": true,
+        "Storage": true
+      },
+      "targetRubricLevels": {
+        "SWE": false,
+        "Senior": false,
+        "Staff": false,
+        "Advanced": false
+      },
+      "assessorInfo": {
+        "hintsAndSuggestions": "- caching, key-value store\n- CDNs\n- database optimizations: sharding, foreign keys\n- vertical scaling (compute power)\n- Messaging Queues\n- Microservices\n- Monorepos",
+        "solution": ""
+      }
+    },
+    {
+      "story": "Our team has been tasked with supporting the creation of any sport and its players. The player attributes may change for each sport. What type of considerations would you propose to the team? ",
+      "skillsTested": {
+        "AI": false,
+        "Production-readiness": false,
+        "ApiDesign": false,
+        "Testing": false,
+        "SystemDesign": true,
+        "Storage": true
+      },
+      "targetRubricLevels": {
+        "SWE": true,
+        "Senior": true,
+        "Staff": true,
+        "Advanced": true
+      },
+      "assessorInfo": {
+        "hintsAndSuggestions": "Research and implement a new strategy to scale our application to include a player’s manager data, team data, stats about batting, pitching and fielding.",
+        "solution": ""
+      }
+    },
+    {
+      "story": "As a User, I'd like to generate a player nickname based on a given country. \n\nScope:\n- Leverage provided LLM to generate nickname\n- Leverage given model (tinyllama) to implement the functionality under CHAT mode by making use of SYSTEM & USER prompts\n- Create a new API to wrap this functionality\n- Create the output either in text/valid JSON as part of this API\n- Add 1 unit test : variate the prompt to test few scenarios\n- Dataset assumptions (Pick one of these options) \n       1. Pickup data from Player.csv \n       2. Pickup examples from google",
+      "skillsTested": {
+        "AI": true,
+        "Production-readiness": false,
+        "ApiDesign": false,
+        "Testing": false,
+        "SystemDesign": false,
+        "Storage": false
+      },
+      "targetRubricLevels": {
+        "SWE": false,
+        "Senior": true,
+        "Staff": true,
+        "Advanced": true
+      },
+      "assessorInfo": {
+        "hintsAndSuggestions": "Create a new method to generate a player's nickname based on their country.",
+        "solution": "- Candidate is able to call the genAI API in their craft demo and walk through the implementation.  \n- Candidate is able to do basic prompt engineering: able to demonstrate using 0-shot, few - shot examples. \n- Candidate is either able to pull examples from playerDB sample or create their own example using wikipedia or google.\n- Candidate is able to detect any potential hallucinations and unprofessional outputs. \n- Candidate is able to understand and implement difference between system and user prompt and talk through the rationale\n- Candidate is able to talk through how to test the implement\n- Candidate is able to get the output from LLM in a particular text or JSON format further transform it as a backend service response or render on frontend\n- Candidate is able to understand and demonstrate some of the parameters they can tune such as - temperature, max_tokensCandidate is able to understand and talk about LLM model they used and why (if not tinyLLAMA model, which model they would use and why)"
+      }
+    },
+    {
+      "story": "As a User, I'd like to recommend a list of players for a tournament based on sample features such as demographic, matches they played, etc\nScope:\n- Leverage LLM model provided to generate recommendation of list of players for a tournament given features from dataset\n- Select a few features from the Player.csv and send the data to genAI model\n- Leverage given model to implement the functionality under CHAT mode by making use of SYSTEM & USER prompts\n- Create a new API to wrap this functionality\n- Create the output either in text/valid JSON as part of this API\n- Add 1 unit test : variate the prompt to test few scenarios\n- Add guardrails to avoid hallucinations",
+      "skillsTested": {
+        "AI": true,
+        "Production-readiness": false,
+        "ApiDesign": false,
+        "Testing": false,
+        "SystemDesign": false,
+        "Storage": false
+      },
+      "targetRubricLevels": {
+        "SWE": false,
+        "Senior": false,
+        "Staff": true,
+        "Advanced": true
+      },
+      "assessorInfo": {
+        "hintsAndSuggestions": "Leverage LLM model provided to generate recommendation of list of players for a tournament given features from dataset",
+        "solution": "- SWE II, should be able to identify a few of these without prompting. \n- Senior and above, should be able to identify the majority of these without prompting and should be able to expand on what implementation would look like. \n\n1. Query param validations\n2. Logging & Monitoring \n3. Exception handling with try/catch \n4. HTTP response codes built into the request/responses\n5. Error messages\n6. Expectations on status code location"
+      }
+    },
+    {
+      "story": "As a User, I'd like to recommend a list of players for a tournament based on sample features such as demographic, matches they played, etc\n\nScope:\n- Leverage the provided AI service (player-service) to generate recommendation of list of players for a tournament given features from the dataset OR a player from the dataset as a seed\n- Create a new API to wrap this functionality.\n- Create the output either in text/valid JSON as part of this API\n- Add 1 unit test : validate input/output to test few scenarios\n- Add guardrails to avoid out of bounds data",
+      "skillsTested": {
+        "AI": true,
+        "Production-readiness": false,
+        "ApiDesign": false,
+        "Testing": false,
+        "SystemDesign": false,
+        "Storage": false
+      },
+      "targetRubricLevels": {
+        "SWE": false,
+        "Senior": false,
+        "Staff": true,
+        "Advanced": true
+      },
+      "assessorInfo": {
+        "hintsAndSuggestions": "Leverage provided traditional AI model (player-service-model) provided to generate recommendation of list of players for a tournament given features from dataset",
+        "solution": "- Candidate is able to call the AI service (player-service-model) API in their craft demo and walk through the implementation.  \n- Candidate is able to return values that are meaningful to the user.\n- Candidate checks for data pitfalls (out of range heights/weights, nonexistent players)\n- Candidate checks if the AI service returned the expected types of responses (number, eg)\n- Candidate handles AI failure\n- Candidate is able to talk through how to test the implementation"
+      }
+    }
+  ]
+}
